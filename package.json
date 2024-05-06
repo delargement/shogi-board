@@ -1,5 +1,5 @@
 {
-  "name": "@delargement/go-board",
+  "name": "@delargement/shogi-board",
   "version": "1.4.3",
   "description": "A Shogi board data type",
   "main": "./src/main.js",
