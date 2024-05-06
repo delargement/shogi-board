@@ -1,4 +1,4 @@
-import GoBoard, {Vertex, Sign, SignMap} from './GoBoard'
+import GoBoard, {Tile, PieceMap} from './ShogiBoard'
 
-export {Vertex, Sign, SignMap}
+export {PieceMap, Tile}
 export default GoBoard

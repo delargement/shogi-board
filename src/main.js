@@ -1,3 +1,3 @@
-const GoBoard = require('./GoBoard')
+const ShogiBoard = require('./ShogiBoard')
 
-module.exports = GoBoard
+module.exports = ShogiBoard
