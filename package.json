@@ -1,7 +1,7 @@
 {
-  "name": "@sabaki/go-board",
+  "name": "@delargement/go-board",
   "version": "1.4.3",
-  "description": "A Go board data type",
+  "description": "A Shogi board data type",
   "main": "./src/main.js",
   "types": "./src/main.d.ts",
   "scripts": {
@@ -9,22 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SabakiHQ/go-board.git"
+    "url": "git+https://github.com/delargement/shogi-board.git"
   },
   "keywords": [
-    "go",
-    "board-game",
-    "weiqi",
-    "baduk",
-    "datatype",
-    "strategy"
+    "shogi"
   ],
   "author": "Yichuan Shen",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SabakiHQ/go-board/issues"
-  },
-  "homepage": "https://github.com/SabakiHQ/go-board#readme",
   "devDependencies": {
     "tap": "^14.6.1"
   }
