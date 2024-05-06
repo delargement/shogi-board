@@ -2,8 +2,8 @@ const {isValidMove} = require("./helper");
 const {PlayerPiece} = require("./Piece");
 
 function setupBoard()  {
-    let a = new Array(
-        [["KY","KE","GI","KI","OU","KI","GI","KE","KY"],
+    let a = [
+        ["KY","KE","GI","KI","OU","KI","GI","KE","KY"],
             [null,"HI",null,null,null,null,null,"KA",null],
             ["FU","FU","FU","FU","FU","FU","FU","FU","FU"],
             [null,null,null,null,null,null,null,null,null],
@@ -12,7 +12,7 @@ function setupBoard()  {
             ["FU","FU","FU","FU","FU","FU","FU","FU","FU"],
             [null,"HI",null,null,null,null,null,"KA",null],
             ["KY","KE","GI","KI","OU","KI","GI","KE","KY"]
-        ])
+        ]
     for (let i = 0; i < a.length; i++) {
         for (let j = 0; j < a[i].length; j++) {
             if (i > 4) {
