@@ -10,7 +10,7 @@ function setupBoard()  {
             [null,null,null,null,null,null,null,null,null],
             [null,null,null,null,null,null,null,null,null],
             ["FU","FU","FU","FU","FU","FU","FU","FU","FU"],
-            [null,"HI",null,null,null,null,null,"KA",null],
+            [null,"KA",null,null,null,null,null,"HI",null],
             ["KY","KE","GI","KI","OU","KI","GI","KE","KY"]
         ]
     for (let i = 0; i < a.length; i++) {
