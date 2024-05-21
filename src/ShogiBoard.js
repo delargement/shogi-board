@@ -1,5 +1,5 @@
 const {isValidMove} = require("./helper");
-const {PlayerPiece} = require("./Piece");
+const {PlayerPiece,Piece} = require("./Piece");
 
 function setupBoard()  {
     let a = [
@@ -15,7 +15,9 @@ function setupBoard()  {
         ]
     for (let i = 0; i < a.length; i++) {
         for (let j = 0; j < a[i].length; j++) {
-            if (i > 4) {
+            if (a[i][j] === null){
+                a[i][j] = new PlayerPiece(a[i][j],0);
+            } else if (i > 4) {
                 a[i][j] = new PlayerPiece(a[i][j],1)
             } else {
                 a[i][j] = new PlayerPiece(a[i][j],-1)
@@ -46,6 +48,7 @@ class ShogiBoard {
     set([x, y], piece) {
         if (this.has([x, y])) {
             this.pieceMap[y][x] = piece
+
         }
 
         return this
@@ -60,22 +63,24 @@ class ShogiBoard {
         return this
     }
 
-    movePiece(originalTile,finalTile) {
+    makeMove(originalTile,finalTile) {
+        let move = this.clone();
         const piece = this.get(originalTile);
         const player = piece.player;
-        if (this.get(finalTile) !== null && this.get(finalTile).player === player) {
+        console.log(this.get(finalTile));
+        console.log(piece.player);
+        if (this.get(finalTile).piece !== null && this.get(finalTile).player === piece.player) {
             throw new Error("Cannot move piece on top your own pieces");
         }
         if (!isValidMove(piece,originalTile,finalTile,this.width)) {
             throw new Error("Invalid move");
         }
-
         if (this.get(finalTile) !== null) {
-            this.captures[player].push(new Piece(this.get(finalTile)))
+            this.captures.get(player).push(new Piece(this.get(finalTile)))
         }
-        this.set(originalTile, null);
-        this.set(finalTile, piece);
-
+        move.set(originalTile, new PlayerPiece(null,0));
+        move.set(finalTile, piece);
+        return move
     }
 
     isSquare() {
@@ -84,6 +89,9 @@ class ShogiBoard {
 
     isEmpty() {
         return this.pieceMap.every(row => row.every(x => x === null))
+    }
+    clone() {
+        return new ShogiBoard(this.pieceMap.map(row => [...row]));
     }
 }
 

@@ -1,5 +1,5 @@
 export const subtractTile = ([a,b],[c,d]) => [a-c,b-d]
-export const transposeTile = ([a,b,N]) => [N-1-a,N-1-b]
+export const transposeTile = ([a,b],N) => [N-1-a,N-1-b]
 export const kingmoves = [[-1,-1], [-1,0], [-1,1], [0,-1], [0,1], [1,-1],[1,0],[1,1]]
 export const genrookmoves = (n) => {
     const res = [];
@@ -51,6 +51,7 @@ function searchForArray(needle, haystack){
     for(i = 0; i < haystack.length; ++i){
         if(needle.length === haystack[i].length){
             current = haystack[i];
+            // noinspection StatementWithEmptyBodyJS
             for(j = 0; j < needle.length && needle[j] === current[j]; ++j);
             if(j === needle.length)
                 return true;
@@ -64,9 +65,10 @@ export function isValidMove(playerPiece, originalTile, finalTile, N)  {
     if (finalTile[0] >= N || finalTile[1] >= N) return false
 
     if (playerPiece.player === -1) {
-        originalTile = transposeTile(originalTile);
-        finalTile = transposeTile(finalTile);
+        originalTile = transposeTile(originalTile,N);
+        finalTile = transposeTile(finalTile,N);
     }
     const sub = subtractTile(finalTile,originalTile)
-    return searchForArray(sub,movepatterns(N)[playerPiece.piece]);
+
+    return searchForArray(sub,movepatterns(N).get(playerPiece.piece));
 }

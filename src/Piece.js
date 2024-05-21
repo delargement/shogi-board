@@ -10,4 +10,4 @@ class PlayerPiece extends Piece {
         this.player = player;
     }
 }
-export { PlayerPiece }
+export { PlayerPiece,Piece }
